@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Nav extends Component {
   render() {
@@ -6,9 +7,9 @@ class Nav extends Component {
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-purple">
           <div className="container-fluid">
-            <a className="navbar-brand" href="#">
-              Navbar
-            </a>
+            <Link className="navbar-brand" to="/">
+              ReactShop
+            </Link>
             <button
               className="navbar-toggler"
               type="button"
@@ -26,46 +27,22 @@ class Nav extends Component {
             >
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <a className="nav-link" aria-current="page" href="#">
+                  <Link className="nav-link" aria-current="page" to="/">
                     Beranda
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">
+                  <Link className="nav-link" to="/profil">
                     Profil
-                  </a>
-                </li>
-                <li className="nav-item dropdown">
-                  <a
-                    className="nav-link dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    Bantuan
-                  </a>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Login
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Register
-                      </a>
-                    </li>
-                    <li></li>
-                  </ul>
+                  </Link>
                 </li>
               </ul>
-              <a className="btn btn-primary me-md-2" href="#">
+              <Link className="btn btn-primary me-md-2" to="/login">
                 Login
-              </a>
-              <a className="btn btn-primary me-md-5" href="#">
+              </Link>
+              <Link className="btn btn-primary me-md-5" to="/register">
                 Register
-              </a>
+              </Link>
             </div>
           </div>
         </nav>
