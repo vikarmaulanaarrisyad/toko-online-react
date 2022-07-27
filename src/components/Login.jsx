@@ -1,8 +1,34 @@
+import axios from "axios";
 import React, { Component } from "react";
 import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 class Login extends Component {
+  state = {
+    email: "",
+    password: "",
+    message: "",
+  };
+
+  // After formSubmit
+  formSubmit = (e) => {
+    e.preventDefault();
+
+    const data = {
+      email: this.state.email,
+      password: this.state.password,
+    };
+
+    axios
+      .post("/login", data)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((errors) => {
+        console.log(errors);
+      });
+  };
+
   render() {
     return (
       <div>
@@ -15,32 +41,36 @@ class Login extends Component {
                   Selamat Datang Di ReactShop, Silahkan Login!
                 </h5>
                 <div className="card-text">
-                  <Form>
+                  <Form onSubmit={this.formSubmit}>
                     <div className="mb-3">
-                      <label
-                        htmlFor="exampleInputEmail1"
-                        className="form-label"
-                      >
+                      <label htmlFor="email" className="form-label">
                         Email address
                       </label>
                       <input
                         type="email"
+                        required
+                        autoComplete="off"
                         className="form-control"
-                        id="exampleInputEmail1"
+                        name="email"
+                        id="email"
                         aria-describedby="emailHelp"
+                        onChange={(e) => {
+                          this.setState({ email: e.target.value });
+                        }}
                       />
                     </div>
                     <div className="mb-3">
-                      <label
-                        htmlFor="exampleInputPassword1"
-                        className="form-label"
-                      >
+                      <label htmlFor="password" className="form-label">
                         Password
                       </label>
                       <input
                         type="password"
+                        required
                         className="form-control"
-                        id="exampleInputPassword1"
+                        name="password"
+                        onChange={(e) => {
+                          this.setState({ password: e.target.value });
+                        }}
                       />
                     </div>
                     <button
